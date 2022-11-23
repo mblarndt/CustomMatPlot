@@ -147,7 +147,7 @@ constexpr Lim<ValueType> operator/(const Lim<ValueType>& rhs,
   new_lim.max = rhs.max / val;
 
   return move(new_lim);
-};
+}
 
 /** @brief A struct that defines min and max using float. */
 typedef Lim<float> Lim_f;
@@ -162,7 +162,7 @@ struct CommonPlotParameterView {
         y_lim{yl},
         x_scaling{xs},
         y_scaling{ys},
-        downsampling_type{ds} {};
+        downsampling_type{ds} {}
   CommonPlotParameterView(const juce::Rectangle<int>&&, const Lim_f&&,
                           const Lim_f&&, const Scaling&&, const Scaling&&,
                           const DownsamplingType&&) =
@@ -186,7 +186,7 @@ struct Marker {
   } type;
 
   /** Contructor marker type only. */
-  Marker(const Marker::Type t) : type{t} {};
+  Marker(const Marker::Type t) : type{t} {}
 
   /** Marker outline color. */
   std::optional<juce::Colour> EdgeColour;
@@ -202,8 +202,8 @@ struct Marker {
   static juce::Path getMarkerPathFrom(Marker marker, const float length) {
     juce::Path path;
 
-    auto addUpTriangleTo = [length](auto& path) {
-      path.addTriangle({0.0f, -length / 2.0f}, {-length / 2.0f, length / 2.0f},
+    auto addUpTriangleTo = [length](auto& jucePath) {
+      jucePath.addTriangle({0.0f, -length / 2.0f}, {-length / 2.0f, length / 2.0f},
                        {length / 2.0f, length / 2.0f});
     };
 

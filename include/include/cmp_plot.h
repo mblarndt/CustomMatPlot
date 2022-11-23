@@ -30,7 +30,7 @@ class Plot : public juce::Component {
  public:
   /** Destructor, making sure to set the lookandfeel in all subcomponenets to
    * nullptr. */
-  ~Plot();
+  ~Plot() override;
 
   /* Constructor **/
   Plot(const Scaling x_scaling = Scaling::linear,
@@ -577,7 +577,7 @@ class Plot : public juce::Component {
  */
 class SemiLogX : public Plot {
  public:
-  SemiLogX() : Plot(Scaling::logarithmic){};
+  SemiLogX() : Plot(Scaling::logarithmic){}
 };
 
 /**
@@ -587,7 +587,7 @@ class SemiLogX : public Plot {
  */
 class SemiLogY : public Plot {
  public:
-  SemiLogY() : Plot(Scaling::linear, Scaling::logarithmic){};
+  SemiLogY() : Plot(Scaling::linear, Scaling::logarithmic){}
 };
 
 /**
@@ -597,7 +597,7 @@ class SemiLogY : public Plot {
  */
 class LogLog : public Plot {
  public:
-  LogLog() : Plot(Scaling::logarithmic, Scaling::logarithmic){};
+  LogLog() : Plot(Scaling::logarithmic, Scaling::logarithmic){}
 };
 
 }  // namespace cmp
